@@ -157,12 +157,12 @@ int main() {
             cout << "Has ganado" << endl;
             env.removeVariable("eleccionEnemigo");
             env.removeVariable("eleccion");
-            env.insertVariable("numeroEnemigos", Variant(env.lookup("numeroEnemigos").getInt() - 1));
+            env.lookup("numeroEnemigos").getInt() - 1;
         } else {
             cout << "Has perdido" << endl;
             env.removeVariable("eleccionEnemigo");
             env.removeVariable("eleccion");
-            env.insertVariable("lives", Variant(env.lookup("lives").getInt() - 1));
+            env.lookup("lives").getInt() - 1;
         }
     }
 

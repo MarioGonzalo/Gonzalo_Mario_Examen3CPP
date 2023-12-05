@@ -1,0 +1,3 @@
+C:/Users/magol/CLionProjects/ExamenT3/Parte2/cmake-build-debug/CMakeFiles/Parte2.dir
+C:/Users/magol/CLionProjects/ExamenT3/Parte2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/magol/CLionProjects/ExamenT3/Parte2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

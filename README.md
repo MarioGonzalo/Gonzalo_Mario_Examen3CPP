@@ -50,6 +50,6 @@ d) Serializa un objeto Variant en una cadena binaria
 
 #### Respuesta: a) Convierte una cadena JSON en un objeto Variant
 
+# Parte 2
 
-
-
+Los ejercicios de código de la parte 2 están localizados en la rama "main" dentro de la carpeta "Parte2", cada apartado estará enumerado como comentario dentro del código y la explicación de cada uno también.

@@ -115,5 +115,18 @@ int main() {
     env.removeVariable("x");
     env.variableExists("x");
     //Fin apartado 5
+    //Inicio apartado 7
+    env.insertVariable("life", Variant(5));
+    cout<< "Introduce tu nombre: ";
+    string playerName;
+    cin >> playerName;
+    env.insertVariable("playerName", Variant(playerName));
+    cout << "Hola " << env.lookup("playerName").getString() << " bienvenido a [CIUDAD]" << endl;
+    if (env.lookup("life").getInt() > 0){
+        cout << "Tienes " << env.lookup("life").getInt() << " vidas" << endl;
+    } else {
+        cout << "Estás muerto" << endl;
+    }
+    //Fin apartado 7
     return 0;
 }

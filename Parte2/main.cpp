@@ -49,13 +49,17 @@ private:
 
 int main() {
     Environment env;
-
+    //Inicio apartado 5
+    env.insertVariable("x", Variant(5));
+    env.insertVariable("y", Variant(3.14f));
+    env.insertVariable("z", Variant("Hola Mundo!"));
+    env.lookup("x");
+    //Fin apartado 5
     //Inicio apartado 4
     try {
         env.insertVariable("x", Variant(5));
         env.lookup("x");
-        //env.lookup("y");
-        env.insertVariable("x", Variant(6));
+        env.lookup("y");
     } catch (runtime_error& e) {
         cout << e.what() << endl;
     }

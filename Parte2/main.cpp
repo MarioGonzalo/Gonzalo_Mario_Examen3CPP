@@ -116,17 +116,70 @@ int main() {
     env.variableExists("x");
     //Fin apartado 5
     //Inicio apartado 7
-    env.insertVariable("life", Variant(5));
+    env.insertVariable("lives", Variant(5));
     cout<< "Introduce tu nombre: ";
     string playerName;
     cin >> playerName;
     env.insertVariable("playerName", Variant(playerName));
+    env.insertVariable("numeroEnemigos", Variant(10));
     cout << "Hola " << env.lookup("playerName").getString() << " bienvenido a [CIUDAD]" << endl;
-    if (env.lookup("life").getInt() > 0){
-        cout << "Tienes " << env.lookup("life").getInt() << " vidas" << endl;
-    } else {
-        cout << "Estás muerto" << endl;
+    cout << "Te vas a enfrentar a " << env.lookup("numeroEnemigos").getInt() << " enemigos al piedra papel o tijera" << endl;
+    cout << "Tienes " << env.lookup("lives").getInt() << " vidas, si las pierdes mueres" << endl;
+    while (env.lookup("lives").getInt() >0 || env.lookup("numeroEnemigos").getInt() >0){
+        cout << "Elige piedra, papel o tijera: ";
+        string eleccion;
+        cin >> eleccion;
+        env.insertVariable("eleccion", Variant(eleccion));
+        int enemigo = rand() % 2;
+        if (enemigo == 0){
+            env.insertVariable("eleccionEnemigo", Variant("piedra"));
+        } else if (enemigo == 1){
+            env.insertVariable("eleccionEnemigo", Variant("papel"));
+        } else {
+            env.insertVariable("eleccionEnemigo", Variant("tijera"));
+        }
+        if (env.lookup("eleccion").getString() == env.lookup("eleccionEnemigo").getString()){
+            cout << "Empate" << endl;
+        } else if (env.lookup("eleccion").getString() == "piedra" && env.lookup("eleccionEnemigo").getString() == "papel"){
+            cout << "Has perdido" << endl;
+            env.insertVariable("lives", Variant(env.lookup("lives").getInt()-1));
+        } else if (env.lookup("eleccion").getString() == "piedra" && env.lookup("eleccionEnemigo").getString() == "tijera"){
+            cout << "Has ganado" << endl;
+            env.lookup("numeroEnemigos").getInt()-1;
+        } else if (env.lookup("eleccion").getString() == "papel" && env.lookup("eleccionEnemigo").getString() == "piedra"){
+            cout << "Has ganado" << endl;
+            env.lookup("numeroEnemigos").getInt()-1;
+        } else if (env.lookup("eleccion").getString() == "papel" && env.lookup("eleccionEnemigo").getString() == "tijera"){
+            cout << "Has perdido" << endl;
+            env.insertVariable("lives", Variant(env.lookup("lives").getInt()-1));
+        } else if (env.lookup("eleccion").getString() == "tijera" && env.lookup("eleccionEnemigo").getString() == "piedra"){
+            cout << "Has perdido" << endl;
+            env.insertVariable("lives", Variant(env.lookup("lives").getInt()-1));
+        } else if (env.lookup("eleccion").getString() == "tijera" && env.lookup("eleccionEnemigo").getString() == "papel"){
+            cout << "Has ganado" << endl;
+        }
+        else if (env.lookup("eleccion").getString() == "piedra" && env.lookup("eleccionEnemigo").getString() == "tijera"){
+            cout << "Has ganado" << endl;
+        } else if (env.lookup("eleccion").getString() == "papel" && env.lookup("eleccionEnemigo").getString() == "piedra"){
+            cout << "Has ganado" << endl;
+            env.lookup("numeroEnemigos").getInt()-1;
+        } else if (env.lookup("eleccion").getString() == "papel" && env.lookup("eleccionEnemigo").getString() == "tijera"){
+            cout << "Has perdido" << endl;
+            env.insertVariable("lives", Variant(env.lookup("lives").getInt()-1));
+        } else if (env.lookup("eleccion").getString() == "tijera" && env.lookup("eleccionEnemigo").getString() == "piedra"){
+            cout << "Has perdido" << endl;
+            env.insertVariable("lives", Variant(env.lookup("lives").getInt()-1));
+        } else if (env.lookup("eleccion").getString() == "tijera" && env.lookup("eleccionEnemigo").getString() == "papel"){
+            cout << "Has ganado" << endl;
+            env.lookup("numeroEnemigos").getInt()-1;
+        }
     }
+    if (env.lookup("lives").getInt() == 0){
+        cout << "Has muerto" << env.lookup("playerName").getString() << endl;
+    } else {
+        cout << "Has ganado" << env.lookup("playerName").getString()<< endl;
+    }
+
     //Fin apartado 7
     return 0;
 }

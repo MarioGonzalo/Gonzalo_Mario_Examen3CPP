@@ -17,6 +17,7 @@ public:
     Variant(int intValue) : data(intValue) {}
     Variant(float floatValue) : data(floatValue) {}
     Variant(const std::string& stringValue) : data(stringValue) {}
+    Variant(bool boolValue) : data(boolValue) {}
 
     // Obtener el valor como int
     int getInt() const {
